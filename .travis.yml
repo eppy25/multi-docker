@@ -5,10 +5,8 @@ services:
 before_install:
     - docker build -t eppy25/react-test -f ./client/Dockerfile.dev ./client
 
-language: generic
-
 script:
-    - docker run -e CI=true eppy25/react-test npm test -- --coverage
+    - docker run -e CI=true eppy25/react-test npm test
 
 after_success:
     - docker build -t eppy25/multi-client ./client
